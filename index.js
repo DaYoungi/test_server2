@@ -31,9 +31,9 @@ io.on('connection',(socket)=>{
         io.emit('msg',{level:"sys" ,msg:nickName+"님이 입장하였습니다"})
     })
 
-    socket.on('send',(msg1)=>{
+    socket.on('send',({nickName:nickName, msg:msg1})=>{
         // io.emit('msg',{msg:msg1})
-        socket.broadcast.emit('msg',{level:"", msg:msg1})
+        socket.broadcast.emit('msg',{level:"", msg:msg1, nickName:nickName})
     })
 })
 
